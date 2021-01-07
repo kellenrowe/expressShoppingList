@@ -32,11 +32,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-
-
-/** 
- * [
- *  {name: "name", price: "price"},
- *  {name: "name", price: "price"}
- * ]
- */

@@ -52,11 +52,13 @@ describe("PATCH /items/:name", function () {
 });
 
 /** tests Delete request to items/:name */
-describe("PATCH /items/:name", function () {
-  it("Updates an item", async function() {
+describe("DELETE /items/:name", function () {
+  it("Deletes an item", async function() {
     const resp = await request(app)
       .delete(`/items/soap`);
     expect(resp.statusCode).toEqual(200);
     expect(resp.body).toEqual({ message: "Deleted" });
+    // verify list length is 0 as well 
+    // add pessimistic testing
   });
 });
