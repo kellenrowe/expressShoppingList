@@ -2,8 +2,8 @@
 
 const express = require("express");
 const app = express();
-const itemsRoutes = require("./routes/itemsRoutes");
-const middleware = require("./middleware");
+const itemsRoutes = require("./itemsRoutes");
+// const middleware = require("./middleware");
 const morgan = require("morgan");
 
 app.use(morgan('dev'));
@@ -13,14 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // useful error class to throw
-const { NotFoundError, BadRequestError } = require("./expressError");
+const { NotFoundError } = require("./expressError");
 
 app.use("/items", itemsRoutes);
 
-/** Finds mean of nums in qs: returns {operation: "mean", result } */
-app.get("/mean", function (req, res) {
-  
-});
 
 /** 404 handler: matches unmatched routes; raises NotFoundError. */
 app.use(function (req, res, next) {
@@ -35,11 +31,7 @@ app.use(function (err, req, res, next) {
   return res.status(status).json({ error: { message, status } });
 });
 
-
-
 module.exports = app;
-
-
 
 
 /** 
